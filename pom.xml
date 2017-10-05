@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.lapsa.maven.pom</groupId>
+		<artifactId>javaee7-app-parent</artifactId>
+		<version>3.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>tech.lapsa.lapsa</groupId>
+	<artifactId>lapsa-hibernate-validation</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Lapsa : Hibernate Validation extensions</name>
+
+	<properties>
+		<!-- Glassfish -->
+		<gf-embeded.hibernate-validator.version>5.0.0.Final</gf-embeded.hibernate-validator.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Glassfish -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${gf-embeded.hibernate-validator.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- Glassfish -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<scm>
+		<connection>scm:git:https://gitlab.lapsa.tech/lapsa/lapsa/hibernate-validation.git</connection>
+		<developerConnection>scm:git:https://gitlab.lapsa.tech/lapsa/lapsa/hibernate-validation.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<issueManagement>
+		<system>gitlab</system>
+		<url>https://gitlab.lapsa.tech/lapsa/lapsa/hibernate-validation/issues</url>
+	</issueManagement>
+
+</project>
