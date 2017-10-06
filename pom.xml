@@ -16,7 +16,7 @@
 	<name>Lapsa : Hibernate Validation extensions</name>
 
 	<properties>
-		<lapsa-payara-bom.version>4.1.2-SNAPSHOT</lapsa-payara-bom.version>
+		<lapsa-payara-bom.version>4.1.2-b1-SNAPSHOT</lapsa-payara-bom.version>
 	</properties>
 
 	<dependencyManagement>
