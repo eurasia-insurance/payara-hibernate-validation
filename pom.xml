@@ -8,12 +8,12 @@
 		<version>3.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>tech.lapsa.lapsa</groupId>
-	<artifactId>lapsa-hibernate-validation</artifactId>
+	<groupId>tech.lapsa.payara</groupId>
+	<artifactId>payara-hibernate-validation</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Lapsa : Hibernate Validation extensions</name>
+	<name>Payara Lib : Hibernate Validation extensions</name>
 
 	<properties>
 		<!-- BOMS -->
@@ -44,14 +44,14 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:git:https://gitlab.lapsa.tech/lapsa/lapsa/hibernate-validation.git</connection>
-		<developerConnection>scm:git:https://gitlab.lapsa.tech/lapsa/lapsa/hibernate-validation.git</developerConnection>
+		<connection>scm:git:https://gitlab.lapsa.tech/lapsa/payara/hibernate-validation.git</connection>
+		<developerConnection>scm:git:https://gitlab.lapsa.tech/lapsa/payara/hibernate-validation.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
 		<system>gitlab</system>
-		<url>https://gitlab.lapsa.tech/lapsa/lapsa/hibernate-validation/issues</url>
+		<url>https://gitlab.lapsa.tech/lapsa/payara/hibernate-validation/issues</url>
 	</issueManagement>
 
 </project>
