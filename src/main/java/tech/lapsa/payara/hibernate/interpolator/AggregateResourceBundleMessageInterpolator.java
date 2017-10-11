@@ -1,4 +1,4 @@
-package com.lapsa.hibernate.validation;
+package tech.lapsa.payara.hibernate.interpolator;
 
 import javax.validation.MessageInterpolator;
 
