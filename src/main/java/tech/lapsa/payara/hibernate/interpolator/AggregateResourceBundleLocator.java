@@ -12,15 +12,18 @@ import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.hibernate.validator.internal.util.privilegedactions.GetClassLoader;
 import org.hibernate.validator.spi.resourceloading.ResourceBundleLocator;
 
+import tech.lapsa.java.commons.logging.MyLogger;
+
 public class AggregateResourceBundleLocator implements ResourceBundleLocator {
 
-    private static final Logger logger = Logger.getLogger(AggregateResourceBundleLocator.class.getName());
+    private static final MyLogger logger = MyLogger.newBuilder() //
+	    .withPackageNameOf(AggregateResourceBundleLocator.class) //
+	    .build();
+
     private static final boolean RESOURCE_BUNDLE_CONTROL_INSTANTIABLE = determineAvailabilityOfResourceBundleControl();
 
     private final String bundleName;
@@ -47,9 +50,9 @@ public class AggregateResourceBundleLocator implements ResourceBundleLocator {
 	}
 
 	if (rb != null)
-	    logger.fine(String.format("%s found.", bundleName));
+	    logger.FINE.log("%s found.", bundleName);
 	else
-	    logger.fine(String.format("%s not found.", bundleName));
+	    logger.FINE.log("%s not found.", bundleName);
 	return rb;
     }
 
@@ -69,7 +72,7 @@ public class AggregateResourceBundleLocator implements ResourceBundleLocator {
 			classLoader);
 	    }
 	} catch (MissingResourceException e) {
-	    logger.log(Level.FINE, message, e);
+	    logger.FINE.log(e, message);
 	}
 	return rb;
     }
@@ -84,7 +87,7 @@ public class AggregateResourceBundleLocator implements ResourceBundleLocator {
 	    ResourceBundle.Control dummyControl = AggregateResourceBundle.CONTROL;
 	    return true;
 	} catch (NoClassDefFoundError e) {
-	    logger.info("unable to use resource bundle aggregation");
+	    logger.INFO.log("unable to use resource bundle aggregation");
 	    return false;
 	}
     }

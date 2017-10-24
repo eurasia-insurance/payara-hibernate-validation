@@ -17,6 +17,7 @@
 
 	<properties>
 		<!-- BOMS -->
+		<java-commons.version>1.0-SNAPSHOT</java-commons.version>
 		<payara-bom.version>4.1.2-1-SNAPSHOT</payara-bom.version>
 	</properties>
 
@@ -24,17 +25,31 @@
 		<dependencies>
 			<!-- BOMS -->
 			<dependency>
+				<groupId>tech.lapsa.java</groupId>
+				<artifactId>java-commons-root</artifactId>
+				<version>${java-commons.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
 				<groupId>tech.lapsa.payara</groupId>
 				<artifactId>payara-bom</artifactId>
 				<version>${payara-bom.version}</version>
-				<scope>import</scope>
 				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 
 	<dependencies>
+		<!-- tech -->
+		<dependency>
+			<groupId>tech.lapsa.java</groupId>
+			<artifactId>java-commons</artifactId>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
 		<!-- Payara -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
