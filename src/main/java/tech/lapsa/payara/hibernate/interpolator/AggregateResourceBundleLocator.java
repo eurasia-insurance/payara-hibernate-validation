@@ -21,7 +21,7 @@ import tech.lapsa.java.commons.logging.MyLogger;
 public class AggregateResourceBundleLocator implements ResourceBundleLocator {
 
     private static final MyLogger logger = MyLogger.newBuilder() //
-	    .withPackageNameOf(AggregateResourceBundleLocator.class) //
+	    .withNameOf(AggregateResourceBundleLocator.class) //
 	    .build();
 
     private static final boolean RESOURCE_BUNDLE_CONTROL_INSTANTIABLE = determineAvailabilityOfResourceBundleControl();
