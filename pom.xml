@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>tech.lapsa.maven</groupId>
 		<artifactId>maven-general</artifactId>
-		<version>3.0-SNAPSHOT</version>
+		<version>3.0</version>
 	</parent>
 
 	<groupId>tech.lapsa.payara</groupId>
@@ -17,8 +17,8 @@
 
 	<properties>
 		<!-- BOMS -->
-		<java-commons.version>1.0-SNAPSHOT</java-commons.version>
-		<payara-bom.version>4.1.2-1-SNAPSHOT</payara-bom.version>
+		<java-commons.version>1.0</java-commons.version>
+		<payara-bom.version>4.1.2-1</payara-bom.version>
 	</properties>
 
 	<dependencyManagement>
