@@ -2,6 +2,7 @@ package tech.lapsa.payara.hibernate.interpolator;
 
 import javax.validation.MessageInterpolator;
 
+import org.hibernate.validator.messageinterpolation.AbstractMessageInterpolator;
 import org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator;
 import org.hibernate.validator.spi.resourceloading.ResourceBundleLocator;
 
@@ -12,7 +13,7 @@ public class AggregateResourceBundleMessageInterpolator extends ResourceBundleMe
 
     static {
 	AGGREGATE_RESOURCE_BUNDLE_LOCATOR = new AggregateResourceBundleLocator(
-		ResourceBundleMessageInterpolator.USER_VALIDATION_MESSAGES);
+		AbstractMessageInterpolator.USER_VALIDATION_MESSAGES);
     }
 
     public AggregateResourceBundleMessageInterpolator() {

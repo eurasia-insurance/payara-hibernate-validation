@@ -29,23 +29,23 @@ public class AggregateResourceBundleLocator implements ResourceBundleLocator {
     private final String bundleName;
     private final boolean aggregate;
 
-    public AggregateResourceBundleLocator(String bundleName) {
+    public AggregateResourceBundleLocator(final String bundleName) {
 	this.bundleName = bundleName;
-	this.aggregate = RESOURCE_BUNDLE_CONTROL_INSTANTIABLE;
+	aggregate = RESOURCE_BUNDLE_CONTROL_INSTANTIABLE;
     }
 
     @Override
-    public ResourceBundle getResourceBundle(Locale locale) {
+    public ResourceBundle getResourceBundle(final Locale locale) {
 	ResourceBundle rb = null;
 
 	if (rb == null) {
-	    ClassLoader classLoader = run(GetClassLoader.fromContext());
+	    final ClassLoader classLoader = run(GetClassLoader.fromContext());
 	    if (classLoader != null)
 		rb = loadBundle(classLoader, locale, bundleName + " not found by thread context classloader");
 	}
 
 	if (rb == null) {
-	    ClassLoader classLoader = run(GetClassLoader.fromClass(AggregateResourceBundleLocator.class));
+	    final ClassLoader classLoader = run(GetClassLoader.fromClass(AggregateResourceBundleLocator.class));
 	    rb = loadBundle(classLoader, locale, bundleName + " not found by validator classloader");
 	}
 
@@ -56,37 +56,36 @@ public class AggregateResourceBundleLocator implements ResourceBundleLocator {
 	return rb;
     }
 
-    private ResourceBundle loadBundle(ClassLoader classLoader, Locale locale, String message) {
+    private ResourceBundle loadBundle(final ClassLoader classLoader, final Locale locale, final String message) {
 	ResourceBundle rb = null;
 	try {
-	    if (aggregate) {
+	    if (aggregate)
 		rb = ResourceBundle.getBundle(
 			bundleName,
 			locale,
 			classLoader,
 			AggregateResourceBundle.CONTROL);
-	    } else {
+	    else
 		rb = ResourceBundle.getBundle(
 			bundleName,
 			locale,
 			classLoader);
-	    }
-	} catch (MissingResourceException e) {
+	} catch (final MissingResourceException e) {
 	    logger.FINE.log(e, message);
 	}
 	return rb;
     }
 
-    private static <T> T run(PrivilegedAction<T> action) {
+    private static <T> T run(final PrivilegedAction<T> action) {
 	return System.getSecurityManager() != null ? AccessController.doPrivileged(action) : action.run();
     }
 
     private static boolean determineAvailabilityOfResourceBundleControl() {
 	try {
 	    @SuppressWarnings("unused")
-	    ResourceBundle.Control dummyControl = AggregateResourceBundle.CONTROL;
+	    final ResourceBundle.Control dummyControl = AggregateResourceBundle.CONTROL;
 	    return true;
-	} catch (NoClassDefFoundError e) {
+	} catch (final NoClassDefFoundError e) {
 	    logger.INFO.log("unable to use resource bundle aggregation");
 	    return false;
 	}
@@ -97,22 +96,21 @@ public class AggregateResourceBundleLocator implements ResourceBundleLocator {
 	protected static final Control CONTROL = new AggregateResourceBundleControl();
 	private final Properties properties;
 
-	protected AggregateResourceBundle(Properties properties) {
+	protected AggregateResourceBundle(final Properties properties) {
 	    this.properties = properties;
 	}
 
 	@Override
-	protected Object handleGetObject(String key) {
+	protected Object handleGetObject(final String key) {
 	    return properties.get(key);
 	}
 
 	@Override
 	public Enumeration<String> getKeys() {
-	    Set<String> keySet = new HashSet<>();
+	    final Set<String> keySet = new HashSet<>();
 	    keySet.addAll(properties.stringPropertyNames());
-	    if (parent != null) {
+	    if (parent != null)
 		keySet.addAll(Collections.list(parent.getKeys()));
-	    }
 	    return Collections.enumeration(keySet);
 	}
     }
@@ -120,29 +118,28 @@ public class AggregateResourceBundleLocator implements ResourceBundleLocator {
     private static class AggregateResourceBundleControl extends ResourceBundle.Control {
 	@Override
 	public ResourceBundle newBundle(
-		String baseName,
-		Locale locale,
-		String format,
-		ClassLoader loader,
-		boolean reload)
+		final String baseName,
+		final Locale locale,
+		final String format,
+		final ClassLoader loader,
+		final boolean reload)
 		throws IllegalAccessException, InstantiationException, IOException {
 	    // only *.properties files can be aggregated. Other formats are
 	    // delegated to the default implementation
-	    if (!"java.properties".equals(format)) {
+	    if (!"java.properties".equals(format))
 		return super.newBundle(baseName, locale, format, loader, reload);
-	    }
 
-	    String resourceName = toBundleName(baseName, locale) + ".properties";
-	    Properties properties = load(resourceName, loader);
+	    final String resourceName = toBundleName(baseName, locale) + ".properties";
+	    final Properties properties = load(resourceName, loader);
 	    return properties.size() == 0 ? null : new AggregateResourceBundle(properties);
 	}
 
-	private Properties load(String resourceName, ClassLoader loader) throws IOException {
-	    Properties aggregatedProperties = new Properties();
-	    Enumeration<URL> urls = run(GetResources.action(loader, resourceName));
+	private Properties load(final String resourceName, final ClassLoader loader) throws IOException {
+	    final Properties aggregatedProperties = new Properties();
+	    final Enumeration<URL> urls = run(GetResources.action(loader, resourceName));
 	    while (urls.hasMoreElements()) {
-		URL url = urls.nextElement();
-		Properties properties = new Properties();
+		final URL url = urls.nextElement();
+		final Properties properties = new Properties();
 		properties.load(url.openStream());
 		aggregatedProperties.putAll(properties);
 	    }

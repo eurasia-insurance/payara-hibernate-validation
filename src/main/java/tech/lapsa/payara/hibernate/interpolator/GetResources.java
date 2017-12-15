@@ -11,11 +11,11 @@ public final class GetResources implements PrivilegedAction<Enumeration<URL>> {
     private final String resourceName;
     private final ClassLoader classLoader;
 
-    public static GetResources action(ClassLoader classLoader, String resourceName) {
+    public static GetResources action(final ClassLoader classLoader, final String resourceName) {
 	return new GetResources(classLoader, resourceName);
     }
 
-    private GetResources(ClassLoader classLoader, String resourceName) {
+    private GetResources(final ClassLoader classLoader, final String resourceName) {
 	this.classLoader = classLoader;
 	this.resourceName = resourceName;
     }
@@ -24,7 +24,7 @@ public final class GetResources implements PrivilegedAction<Enumeration<URL>> {
     public Enumeration<URL> run() {
 	try {
 	    return classLoader.getResources(resourceName);
-	} catch (IOException e) {
+	} catch (final IOException e) {
 	    // Collections.emptyEnumeration() would be 1.7
 	    return Collections.enumeration(Collections.<URL> emptyList());
 	}
