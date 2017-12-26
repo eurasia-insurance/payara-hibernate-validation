@@ -1,6 +1,7 @@
 package tech.lapsa.payara.hibernate.interpolator;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
@@ -140,7 +141,9 @@ public class AggregateResourceBundleLocator implements ResourceBundleLocator {
 	    while (urls.hasMoreElements()) {
 		final URL url = urls.nextElement();
 		final Properties properties = new Properties();
-		properties.load(url.openStream());
+		try (final InputStream is = url.openStream()) {
+		    properties.load(is);
+		}
 		aggregatedProperties.putAll(properties);
 	    }
 	    return aggregatedProperties;
