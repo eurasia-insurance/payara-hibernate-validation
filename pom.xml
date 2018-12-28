@@ -9,15 +9,15 @@
 
 	<groupId>tech.lapsa.payara</groupId>
 	<artifactId>payara-hibernate-validation</artifactId>
-	<version>1.1.1</version>
+	<version>CURRENT-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Payara Lib : Hibernate Validation extensions</name>
 
 	<properties>
 		<!-- BOMS -->
-		<java-commons.version>1.1</java-commons.version>
-		<payara-bom.version>4.1.2-2</payara-bom.version>
+		<java-commons.version>CURRENT-SNAPSHOT</java-commons.version>
+		<payara-bom.version>CURRENT-SNAPSHOT</payara-bom.version>
 	</properties>
 
 	<dependencyManagement>
