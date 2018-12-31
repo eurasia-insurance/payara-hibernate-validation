@@ -63,9 +63,4 @@
 		<tag>HEAD</tag>
 	</scm>
 
-	<issueManagement>
-		<system>gitlab</system>
-		<url>https://gitlab.lapsa.tech/lapsa/payara/hibernate-validation/issues</url>
-	</issueManagement>
-
 </project>
