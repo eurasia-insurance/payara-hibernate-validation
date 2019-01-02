@@ -9,7 +9,7 @@
 
 	<groupId>tech.lapsa.payara</groupId>
 	<artifactId>payara-hibernate-validation</artifactId>
-	<version>CURRENT-SNAPSHOT</version>
+	<version>20190103</version>
 	<packaging>jar</packaging>
 
 	<name>Payara Lib : Hibernate Validation extensions</name>
@@ -60,7 +60,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/eurasia-insurance/payara-hibernate-validation.git</connection>
 		<developerConnection>scm:git:https://github.com/eurasia-insurance/payara-hibernate-validation.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>v20190103</tag>
 	</scm>
 
 </project>
