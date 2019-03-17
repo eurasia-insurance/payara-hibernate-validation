@@ -16,8 +16,8 @@
 
 	<properties>
 		<!-- BOMS -->
-		<java-commons.version>CURRENT-SNAPSHOT</java-commons.version>
-		<payara-bom.version>CURRENT-SNAPSHOT</payara-bom.version>
+		<java-commons.version>20190317r6</java-commons.version>
+		<payara-bom.version>20190317r6</payara-bom.version>
 	</properties>
 
 	<dependencyManagement>
